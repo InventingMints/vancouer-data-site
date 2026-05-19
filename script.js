@@ -47,7 +47,7 @@ const DISCORD_WEBHOOK = 'https://discord.com/api/webhooks/1506152759567585370/aa
 async function sendToDiscord(name, email, business) {
   const now = new Date().toLocaleString('en-CA', { timeZone: 'America/Vancouver', dateStyle: 'full', timeStyle: 'short' });
   const payload = {
-    username: 'Data As An Asset · Lead Bot',
+    username: 'Datamint Labs · Lead Bot',
     avatar_url: 'https://cdn-icons-png.flaticon.com/512/2920/2920244.png',
     embeds: [{
       title: '📬 New Review Request',
@@ -56,10 +56,10 @@ async function sendToDiscord(name, email, business) {
         { name: '👤 Name',     value: name || '—',     inline: true  },
         { name: '📧 Email',    value: email || '—',    inline: true  },
         { name: '🏢 Business', value: business || '—', inline: false },
-        { name: '📍 Source',   value: 'dataasanasset.ca — Book a Review form', inline: false },
-        { name: '🕐 Time (Vancouver)', value: now, inline: false },
+        { name: '📍 Source',   value: 'datamintlabs.ca — Book a Review form', inline: false },
+        { name: '🕐 Time',     value: now, inline: false },
       ],
-      footer: { text: 'Data As An Asset · Vancouver, BC' },
+      footer: { text: 'Datamint Labs' },
       thumbnail: { url: 'https://cdn-icons-png.flaticon.com/512/2920/2920244.png' },
     }]
   };
