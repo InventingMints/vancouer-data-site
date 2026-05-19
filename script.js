@@ -26,7 +26,7 @@ document.querySelectorAll('.faq-question').forEach(btn => {
 
 // Scroll reveal
 const revealEls = document.querySelectorAll(
-  '.card, .why-feat, .step, .coverage-item, .faq-item, .cta-box, .why-text, .why-features, .section-label, .section-title, .testimonial-card'
+  '.card, .why-feat, .step, .coverage-item, .faq-item, .cta-box, .why-text, .why-features, .section-label, .section-title, .testimonial-card, .case-featured, .case-card'
 );
 revealEls.forEach(el => el.classList.add('reveal'));
 
@@ -50,13 +50,13 @@ async function sendToDiscord(name, email, business) {
     username: 'Data As An Asset · Lead Bot',
     avatar_url: 'https://cdn-icons-png.flaticon.com/512/2920/2920244.png',
     embeds: [{
-      title: '📬 New Free Review Request',
+      title: '📬 New Review Request',
       color: 0xA252F3,
       fields: [
         { name: '👤 Name',     value: name || '—',     inline: true  },
         { name: '📧 Email',    value: email || '—',    inline: true  },
         { name: '🏢 Business', value: business || '—', inline: false },
-        { name: '📍 Source',   value: 'dataasanasset.ca — Book Free Review form', inline: false },
+        { name: '📍 Source',   value: 'dataasanasset.ca — Book a Review form', inline: false },
         { name: '🕐 Time (Vancouver)', value: now, inline: false },
       ],
       footer: { text: 'Data As An Asset · Vancouver, BC' },
@@ -88,7 +88,7 @@ submitBtn.addEventListener('click', async (e) => {
 
   try {
     await sendToDiscord(name, email, business);
-    submitBtn.textContent = '✓ Request Sent — I\'ll be in touch within 24 hours';
+    submitBtn.textContent = '✓ Request Sent — We will be in touch within 24 hours';
     submitBtn.style.background = '#22c55e';
     submitBtn.style.boxShadow = '0 0 30px rgba(34,197,94,0.3)';
     inputs.forEach(i => i.disabled = true);
