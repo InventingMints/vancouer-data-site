@@ -45,7 +45,7 @@ revealEls.forEach(el => observer.observe(el));
 const DISCORD_WEBHOOK = 'https://discord.com/api/webhooks/1506152759567585370/aa9QBH4dur7y-Izkg4wBLMN42Oz28tKctvpddReeiFb-wHKE5OEHkUhCPuek1C6mS09h';
 
 async function sendToDiscord(name, email, business) {
-  const now = new Date().toLocaleString('en-CA', { timeZone: 'America/Vancouver', dateStyle: 'full', timeStyle: 'short' });
+  const now = new Date().toLocaleString('en-CA', { timeZone: 'America/Toronto', dateStyle: 'full', timeStyle: 'short' });
   const payload = {
     username: 'Datamint Labs · Lead Bot',
     avatar_url: 'https://cdn-icons-png.flaticon.com/512/2920/2920244.png',
