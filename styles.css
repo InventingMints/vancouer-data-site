@@ -373,7 +373,7 @@ a { color: inherit; text-decoration: none; }
 /* ===== CARDS ===== */
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.25rem;
 }
 .card {
@@ -1035,6 +1035,28 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.7;
 }
 
+/* ===== ABOUT ENTITY (SEO semantic block) ===== */
+.about-entity {
+  padding: 4rem 0;
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border);
+}
+.about-entity-inner {
+  max-width: 860px;
+}
+.about-entity h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.75rem;
+  color: var(--text-muted);
+}
+.about-entity p {
+  font-size: 0.875rem;
+  color: var(--text-dim);
+  line-height: 1.85;
+}
+
 /* ===== SCROLL REVEAL ===== */
 .reveal {
   opacity: 0;
@@ -1048,7 +1070,7 @@ a { color: inherit; text-decoration: none; }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
-  .cards-grid { grid-template-columns: 1fr; }
+  .cards-grid { grid-template-columns: 1fr 1fr; }
   .why-grid { grid-template-columns: 1fr; gap: 3rem; }
   .steps { grid-template-columns: 1fr; }
   .step-arrow { display: none; }
@@ -1068,6 +1090,7 @@ a { color: inherit; text-decoration: none; }
   .hamburger { display: flex; }
   .hero { padding: 7rem 1.5rem 4rem; }
   .hero-stats { gap: 1.5rem; }
+  .cards-grid { grid-template-columns: 1fr; }
   .coverage-grid { grid-template-columns: 1fr; }
   .why-features { grid-template-columns: 1fr; }
   .cta-inner { padding: 3rem 1.5rem; }
