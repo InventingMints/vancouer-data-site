@@ -26,7 +26,7 @@ document.querySelectorAll('.faq-question').forEach(btn => {
 
 // Scroll reveal
 const revealEls = document.querySelectorAll(
-  '.card, .why-feat, .step, .coverage-item, .faq-item, .cta-box, .why-text, .why-features, .section-label, .section-title'
+  '.card, .why-feat, .step, .coverage-item, .faq-item, .cta-box, .why-text, .why-features, .section-label, .section-title, .testimonial-card'
 );
 revealEls.forEach(el => el.classList.add('reveal'));
 
