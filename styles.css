@@ -650,6 +650,19 @@ a { color: inherit; text-decoration: none; }
   border-top: 1px solid rgba(16,185,129,0.15);
 }
 .outcome-icon { font-size: 0.6rem; }
+.card-case-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--emerald-dark);
+  text-decoration: none;
+  margin-top: 0.85rem;
+  opacity: 0.8;
+  transition: opacity 0.2s, gap 0.2s;
+}
+.card-case-link:hover { opacity: 1; gap: 0.5rem; }
 
 /* ===== WHY ===== */
 .why-grid {

@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Studies | Datamint Labs</title>
+  <meta name="description" content="Real-world results across all five Datamint Labs service pillars — AI readiness, data governance, data protection, data intelligence, and bookkeeping." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://datamintlabs.ca/case-studies.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Case Studies Page Styles ── */
+    .cs-hero {
+      padding: 10rem 0 5rem;
+      text-align: center;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+    .cs-hero::before {
+      content: '';
+      position: absolute;
+      top: -10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 500px;
+      background: radial-gradient(ellipse, rgba(139,63,217,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cs-hero-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--emerald);
+      margin-bottom: 1.25rem;
+    }
+    .cs-hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 1.25rem;
+    }
+    .cs-hero p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+    .cs-nav-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .cs-nav-pill {
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      background: var(--surface);
+      transition: all 0.2s;
+    }
+    .cs-nav-pill:hover {
+      border-color: var(--emerald);
+      color: var(--emerald-dark);
+      background: rgba(16,185,129,0.05);
+    }
+
+    /* ── Case Study Sections ── */
+    .cs-section {
+      padding: 5rem 0;
+      border-top: 1px solid var(--border);
+    }
+    .cs-section:nth-child(even) { background: var(--bg-alt); }
+    .cs-section-inner {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .cs-left { }
+    .cs-right { }
+    .cs-pillar-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--emerald-dark);
+      background: rgba(16,185,129,0.08);
+      border: 1px solid rgba(16,185,129,0.2);
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+      margin-bottom: 1.25rem;
+    }
+    .cs-left h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .cs-left h2 span { color: var(--purple); }
+    .cs-meta {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+    .cs-meta-item {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    .cs-meta-item strong {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 0.2rem;
+    }
+    .cs-image {
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 16/10;
+      margin-bottom: 2rem;
+    }
+    .cs-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .cs-stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .cs-stat-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem 1rem;
+      text-align: center;
+    }
+    .cs-stat-num {
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--purple);
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+    .cs-stat-label {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 600;
+    }
+    .cs-body-block { margin-bottom: 2rem; }
+    .cs-body-block h3 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+    .cs-body-block p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+    .cs-outcomes {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .cs-outcomes li {
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .cs-outcomes li::before {
+      content: '✦';
+      color: var(--emerald);
+      font-size: 0.6rem;
+      margin-top: 0.35rem;
+      flex-shrink: 0;
+    }
+    .cs-quote {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--purple);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1.25rem 1.5rem;
+      margin-top: 2rem;
+    }
+    .cs-quote p {
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 0.5rem;
+    }
+    .cs-quote cite {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      font-style: normal;
+    }
+    .cs-cta-bar {
+      background: linear-gradient(135deg, var(--purple-dark), var(--purple));
+      padding: 5rem 2rem;
+      text-align: center;
+      color: #fff;
+    }
+    .cs-cta-bar h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+    }
+    .cs-cta-bar p {
+      font-size: 1rem;
+      opacity: 0.75;
+      max-width: 480px;
+      margin: 0 auto 2rem;
+      line-height: 1.6;
+    }
+    .cs-cta-bar .btn {
+      background: #fff;
+      color: var(--purple-dark);
+      font-weight: 700;
+      padding: 0.9rem 2rem;
+      border-radius: 100px;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+      .cs-section-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .cs-stats-row { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .cs-stats-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav scrolled" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-dot"></span>
+        Datamint Labs
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#why">Why Us</a></li>
+        <li><a href="index.html#process">Process</a></li>
+        <li><a href="index.html#coverage">Coverage</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+      </ul>
+      <a href="index.html#cta" class="btn btn-nav">Book a Review</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html#services">Services</a>
+      <a href="index.html#why">Why Us</a>
+      <a href="index.html#process">Process</a>
+      <a href="index.html#coverage">Coverage</a>
+      <a href="index.html#cta" class="btn btn-nav">Book a Review</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="cs-hero">
+    <div class="container">
+      <div class="cs-hero-label">Results Across Every Pillar</div>
+      <h1>Real work.<br /><span class="gradient-text">Real outcomes.</span></h1>
+      <p>Five service pillars. Five stories of businesses that got their data, compliance, and finances under control.</p>
+      <div class="cs-nav-pills">
+        <a href="#ai-readiness"    class="cs-nav-pill">AI Readiness</a>
+        <a href="#data-governance" class="cs-nav-pill">Data Governance</a>
+        <a href="#data-protection" class="cs-nav-pill">Data Protection</a>
+        <a href="#data-intelligence" class="cs-nav-pill">Data Intelligence</a>
+        <a href="#bookkeeping"     class="cs-nav-pill">Bookkeeping</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CASE 1: AI READINESS ── -->
+  <section class="cs-section" id="ai-readiness">
+    <div class="cs-section-inner">
+      <div class="cs-left">
+        <div class="cs-pillar-tag">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          AI Readiness & Strategy
+        </div>
+        <h2>How a professional services firm <span>avoided $200K in wasted AI spend</span></h2>
+        <div class="cs-meta">
+          <div class="cs-meta-item"><strong>Industry</strong>Professional Services</div>
+          <div class="cs-meta-item"><strong>Size</strong>45 employees</div>
+          <div class="cs-meta-item"><strong>Timeline</strong>6 weeks</div>
+        </div>
+        <div class="cs-body-block">
+          <h3>The Challenge</h3>
+          <p>A mid-size professional services firm was ready to deploy an AI-powered document processing and client intake system. They had budget approved and had already begun vendor conversations. But before committing, they wanted an independent assessment of whether their data infrastructure could actually support it.</p>
+        </div>
+        <div class="cs-body-block">
+          <h3>What We Found</h3>
+          <p>Their client data was spread across four disconnected systems with no unified structure, inconsistent naming conventions, and thousands of duplicate records. The AI tools they had selected required clean, structured input data. Without remediation, the implementation would have failed within three months — or produced dangerously inaccurate outputs.</p>
+        </div>
+        <div class="cs-body-block">
+          <h3>What We Did</h3>
+          <p>We delivered a full AI readiness assessment covering data quality scoring, architecture gaps, governance posture, and a phased remediation roadmap. We renegotiated their vendor timeline and helped them fix the foundation first — restructuring their core data layer over eight weeks before AI implementation began.</p>
+        </div>
+        <ul class="cs-outcomes">
+          <li>Prevented an estimated $200K implementation failure before it happened</li>
+          <li>Reduced duplicate records by 87% across all client systems</li>
+          <li>AI deployment launched on schedule, on budget, 4 months later</li>
+          <li>Document processing time reduced by 62% post-deployment</li>
+        </ul>
+        <div class="cs-quote">
+          <p>"We were weeks away from signing a contract that would have failed. The readiness assessment was the most valuable thing we did before our AI project."</p>
+          <cite>Managing Partner, Professional Services Firm</cite>
+        </div>
+      </div>
+      <div class="cs-right">
+        <div class="cs-image">
+          <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&auto=format&fit=crop&q=80" alt="AI strategy and data readiness assessment" loading="lazy" />
+        </div>
+        <div class="cs-stats-row">
+          <div class="cs-stat-box">
+            <div class="cs-stat-num">$200K</div>
+            <div class="cs-stat-label">Failure prevented</div>
+          </div>
+          <div class="cs-stat-box">
+            <div class="cs-stat-num">87%</div>
+            <div class="cs-stat-label">Duplicates removed</div>
+          </div>
+          <div class="cs-stat-box">
+            <div class="cs-stat-num">62%</div>
+            <div class="cs-stat-label">Processing time saved</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CASE 2: DATA GOVERNANCE ── -->
+  <section class="cs-section" id="data-governance">
+    <div class="cs-section-inner">
+      <div class="cs-left">
+        <div class="cs-pillar-tag">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          Data Management & Governance
+        </div>
+        <h2>A manufacturer cut reporting time by <span>70% with a governance framework</span></h2>
+        <div class="cs-meta">
+          <div class="cs-meta-item"><strong>Industry</strong>Manufacturing</div>
+          <div class="cs-meta-item"><strong>Size</strong>120 employees</div>
+          <div class="cs-meta-item"><strong>Timeline</strong>10 weeks</div>
+        </div>
+        <div class="cs-body-block">
+          <h3>The Challenge</h3>
+          <p>A growing manufacturer had data sitting in three separate ERP systems, two spreadsheet-based tracking tools, and a legacy inventory platform. Every monthly leadership report required two full days of manual consolidation by the operations manager — and the numbers still didn't always reconcile.</p>
+        </div>
+        <div class="cs-body-block">
+          <h3>What We Did</h3>
+          <p>We mapped every data source, defined data ownership for each domain, built a governance policy covering data quality standards, naming conventions, and update responsibilities. We then designed a unified data layer that pulled from all systems automatically, with a single approved version of truth for leadership reporting.</p>
+        </div>
+        <div class="cs-body-block">
+          <h3>The Outcome</h3>
+          <p>Monthly reporting dropped from two days to four hours. Leadership had confidence in the numbers for the first time in three years. Within six months, the governance framework expanded to cover their new production line data without any additional consulting engagement.</p>
+        </div>
+        <ul class="cs-outcomes">
+          <li>Monthly reporting time reduced from 2 days to under 4 hours</li>
+          <li>Single source of truth established across all 5 data systems</li>
+          <li>Data ownership assigned across 8 departments</li>
+          <li>Zero reconciliation errors in the first 6 months post-implementation</li>
+        </ul>
+        <div class="cs-quote">
+          <p>"I used to dread the end of every month. Now the report practically generates itself and I trust every number in it."</p>
+          <cite>Operations Manager, Manufacturing Business</cite>
+        </div>
+      </div>
+      <div class="cs-right">
+        <div class="cs-image">
+          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&auto=format&fit=crop&q=80" alt="Data governance and management framework" loading="lazy" />
+        </div>
+        <div class="cs-stats-row">
+          <div class="cs-stat-box">
+            <div class="cs-stat-num">70%</div>
+            <div class="cs-stat-label">Reporting time saved</div>
+          </div>
+          <div class="cs-stat-box">
+            <div class="cs-stat-num">5</div>
+            <div class="cs-stat-label">Systems unified</div>
+          </div>
+          <div class="cs-stat-box">
+            <div class="cs-stat-num">Zero</div>
+            <div class="cs-stat-label">Reconciliation errors</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CASE 3: DATA PROTECTION ── -->
+  <section class="cs-section" id="data-protection">
+    <div class="cs-section-inner">
+      <div class="cs-left">
+        <div class="cs-pillar-tag">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Data Protection & Compliance
+        </div>
+        <h2>A health-adjacent clinic went from <span>zero documentation to audit-ready in 8 weeks</span></h2>
+        <div class="cs-meta">
+          <div class="cs-meta-item"><strong>Industry</strong>Health & Wellness</div>
+          <div class="cs-meta-item"><strong>Size</strong>22 employees</div>
+          <div class="cs-meta-item"><strong>Timeline</strong>8 weeks</div>
+        </div>
+        <div class="cs-body-block">
+          <h3>The Challenge</h3>
+          <p>A wellness clinic handling personal health information had no formal privacy policy, no data classification system, and no documented process for how client information was stored or accessed. A new enterprise client required a PIPEDA compliance confirmation before signing a corporate wellness contract worth $180K annually.</p>
+        </div>
+        <div class="cs-body-block">
+          <h3>What We Did</h3>
+          <p>We completed a full data protection audit, classified all data assets, identified and closed three critical exposure points, wrote their privacy policy from scratch, implemented access controls across their booking and records systems, and produced a compliance documentation package audit-ready for review.</p>
+        </div>
+        <div class="cs-body-block">
+          <h3>The Outcome</h3>
+          <p>The enterprise client signed within two weeks of receiving the compliance documentation. The clinic now has a permanent privacy framework that scales with them and requires only a quarterly review — not a full rebuild every time a new client asks.</p>
+        </div>
+        <ul class="cs-outcomes">
+          <li>$180K annual enterprise contract secured directly from compliance work</li>
+          <li>3 critical data exposure points identified and remediated</li>
+          <li>Full PIPEDA-aligned documentation package delivered in 8 weeks</li>
+          <li>Staff privacy training completed across all 22 employees</li>
+        </ul>
+        <div class="cs-quote">
+          <p>"We almost lost a $180K contract because we had no privacy documentation. Eight weeks later we had everything we needed — and we actually understood it."</p>
+          <cite>Director, Health & Wellness Clinic</cite>
+        </div>
+      </div>
+      <div class="cs-right">
+        <div class="cs-image">
+          <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&auto=format&fit=crop&q=80" alt="Data protection and PIPEDA compliance" loading="lazy" />
+        </div>
+        <div class="cs-stats-row">
+          <div class="cs-stat-box">
+            <div class="cs-stat-num">$180K</div>
+            <div class="cs-stat-label">Contract secured</div>
+          </div>
+          <div class="cs-stat-box">
+            <div class="cs-stat-num">8wks</div>
+            <div class="cs-stat-label">To audit-ready</div>
+          </div>
+          <div class="cs-stat-box">
+            <div class="cs-stat-num">3</div>
+            <div class="cs-stat-label">Exposures closed</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CASE 4: DATA INTELLIGENCE ── -->
+  <section class="cs-section" id="data-intelligence">
+    <div class="cs-section-inner">
+      <div class="cs-left">
+        <div class="cs-pillar-tag">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          Data Intelligence & Architecture
+        </div>
+        <h2>A national retailer grew sales <span>20% while 40% of locations were closed</span></h2>
+        <div class="cs-meta">
+          <div class="cs-meta-item"><strong>Industry</strong>Retail</div>
+          <div class="cs-meta-item"><strong>Size</strong>Multi-location</div>
+          <div class="cs-meta-item"><strong>Timeline</strong>12 weeks</div>
+        </div>
+        <div class="cs-body-block">
+          <h3>The Challenge</h3>
+          <p>When the pandemic forced closure of nearly half their brick-and-mortar locations, this national retailer faced an impossible problem: how to maintain revenue without visibility into which products were moving, where demand was shifting, or how to redeploy inventory across the network in real time.</p>
+        </div>
+        <div class="cs-body-block">
+          <h3>What We Did</h3>
+          <p>We designed and built a unified data intelligence layer that consolidated inventory, customer behaviour, and sales data from all locations into a single real-time dashboard. Leadership could see stock levels, demand signals, and fulfilment gaps in minutes — not days. This enabled dynamic stock reallocation across their network as demand shifted.</p>
+        </div>
+        <div class="cs-body-block">
+          <h3>The Outcome</h3>
+          <p>Instead of contracting during closures, they grew. Real-time intelligence let them outpace competitors who were flying blind. The intelligence layer became a permanent fixture of their operations and now supports their e-commerce expansion.</p>
+        </div>
+        <ul class="cs-outcomes">
+          <li>20% sales growth while 40% of locations remained closed</li>
+          <li>Real-time inventory visibility across all locations for the first time</li>
+          <li>Stock reallocation decisions reduced from days to under 30 minutes</li>
+          <li>Intelligence layer now supports full e-commerce operation</li>
+        </ul>
+        <div class="cs-quote">
+          <p>"We went from flying blind to making real-time decisions. The visibility we built during the closures is now the backbone of our entire operation."</p>
+          <cite>VP Operations, National Retailer</cite>
+        </div>
+      </div>
+      <div class="cs-right">
+        <div class="cs-image">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80" alt="Data intelligence and business analytics dashboard" loading="lazy" />
+        </div>
+        <div class="cs-stats-row">
+          <div class="cs-stat-box">
+            <div class="cs-stat-num">20%</div>
+            <div class="cs-stat-label">Sales growth</div>
+          </div>
+          <div class="cs-stat-box">
+            <div class="cs-stat-num">40%</div>
+            <div class="cs-stat-label">Locations closed</div>
+          </div>
+          <div class="cs-stat-box">
+            <div class="cs-stat-num">30min</div>
+            <div class="cs-stat-label">Decision time</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CASE 5: BOOKKEEPING ── -->
+  <section class="cs-section" id="bookkeeping">
+    <div class="cs-section-inner">
+      <div class="cs-left">
+        <div class="cs-pillar-tag">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          Bookkeeping & Financial Records
+        </div>
+        <h2>An e-commerce business raised <span>$320K after 18 months of clean books</span></h2>
+        <div class="cs-meta">
+          <div class="cs-meta-item"><strong>Industry</strong>E-commerce</div>
+          <div class="cs-meta-item"><strong>Size</strong>8 employees</div>
+          <div class="cs-meta-item"><strong>Timeline</strong>Ongoing</div>
+        </div>
+        <div class="cs-body-block">
+          <h3>The Challenge</h3>
+          <p>A fast-growing e-commerce business had been running on a mix of personal and business accounts, with receipts in email, expenses untracked, and no reconciled records for the prior 18 months. They wanted to raise investment capital but had nothing to show investors. Their accountant had warned them twice that tax season would be a crisis.</p>
+        </div>
+        <div class="cs-body-block">
+          <h3>What We Did</h3>
+          <p>We performed a full financial records reconstruction for the prior 18 months — categorising every transaction, reconciling every account, and separating personal from business expenses. We implemented a proper bookkeeping system with monthly close processes, expense policies, and automated reconciliation. From month one going forward, books were clean, current, and investor-presentation ready.</p>
+        </div>
+        <div class="cs-body-block">
+          <h3>The Outcome</h3>
+          <p>The founders walked into their first investor meeting with 18 months of clean, auditable financial records. They closed a $320K seed round four months later. Their accountant reported the smoothest tax filing in the company's history. Monthly bookkeeping is now a 30-minute review, not a weekend crisis.</p>
+        </div>
+        <ul class="cs-outcomes">
+          <li>$320K seed round raised — clean books were a key investor requirement</li>
+          <li>18 months of financial records reconstructed and reconciled</li>
+          <li>Personal and business finances fully separated for the first time</li>
+          <li>Monthly close now takes 30 minutes, not a full weekend</li>
+        </ul>
+        <div class="cs-quote">
+          <p>"We couldn't have raised without clean books. What felt like a nightmare task got done properly and fast — and we haven't worried about our finances since."</p>
+          <cite>Co-founder, E-commerce Business</cite>
+        </div>
+      </div>
+      <div class="cs-right">
+        <div class="cs-image">
+          <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&auto=format&fit=crop&q=80" alt="Bookkeeping and financial records management" loading="lazy" />
+        </div>
+        <div class="cs-stats-row">
+          <div class="cs-stat-box">
+            <div class="cs-stat-num">$320K</div>
+            <div class="cs-stat-label">Seed round raised</div>
+          </div>
+          <div class="cs-stat-box">
+            <div class="cs-stat-num">18mo</div>
+            <div class="cs-stat-label">Records rebuilt</div>
+          </div>
+          <div class="cs-stat-box">
+            <div class="cs-stat-num">30min</div>
+            <div class="cs-stat-label">Monthly close time</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAR -->
+  <div class="cs-cta-bar">
+    <h2>Ready to write your own story?</h2>
+    <p>Tell us your biggest data or finance challenge and we will show you exactly how we would approach it.</p>
+    <a href="index.html#cta" class="btn">Book a Discovery Call</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="logo" style="margin-bottom:1rem;">
+            <span class="logo-dot"></span>
+            Datamint Labs
+          </div>
+          <p class="footer-tagline">Data management, governance, AI readiness, data protection, and bookkeeping for growing businesses.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h5>Services</h5>
+            <a href="index.html#services">AI Readiness</a>
+            <a href="index.html#services">Data Governance</a>
+            <a href="index.html#services">Data Protection</a>
+            <a href="index.html#services">Data Intelligence</a>
+            <a href="index.html#services">Bookkeeping</a>
+          </div>
+          <div class="footer-col">
+            <h5>Case Studies</h5>
+            <a href="#ai-readiness">AI Readiness</a>
+            <a href="#data-governance">Data Governance</a>
+            <a href="#data-protection">Data Protection</a>
+            <a href="#data-intelligence">Data Intelligence</a>
+            <a href="#bookkeeping">Bookkeeping</a>
+          </div>
+          <div class="footer-col">
+            <h5>Company</h5>
+            <a href="index.html#why">Why Us</a>
+            <a href="index.html#process">How It Works</a>
+            <a href="index.html#faq">FAQ</a>
+          </div>
+          <div class="footer-col">
+            <h5>Get Started</h5>
+            <a href="index.html#cta">Book a Review</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom" style="max-width:1200px;margin:0 auto;padding:0 2rem;">
+      <span>© 2026 Datamint Labs</span>
+      <span>Built for growing businesses.</span>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+    // Mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+  </script>
+
+</body>
+</html>
