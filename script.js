@@ -76,9 +76,11 @@ async function sendToDiscord(name, email, phone, business) {
 const GOOGLE_SHEET_WEBHOOK = 'https://script.google.com/macros/s/AKfycbxLhekjxGkWxjgfxdPz-uRvaTSJoJ47WGNoIg5QlzZlOhhNMkr0MYBfcEDcJKplSNU_TQ/exec';
 
 async function sendToGoogleSheet(name, email, phone, business) {
-  if (GOOGLE_SHEET_WEBHOOK === 'YOUR_APPS_SCRIPT_WEB_APP_URL') return; // not configured yet
   const params = new URLSearchParams({ name, email, phone, business });
-  await fetch(`${GOOGLE_SHEET_WEBHOOK}?${params}`, { method: 'GET' });
+  await fetch(`${GOOGLE_SHEET_WEBHOOK}?${params}`, {
+    method: 'GET',
+    mode: 'no-cors', // required for Google Apps Script from external domains
+  });
 }
 
 // ── Form submit ──────────────────────────────────────────────────
@@ -108,10 +110,9 @@ submitBtn.addEventListener('click', async (e) => {
   submitBtn.disabled = true;
 
   try {
-    await Promise.all([
-      sendToDiscord(name, email, phone, business),
-      sendToGoogleSheet(name, email, phone, business),
-    ]);
+    // Fire Sheets in background — don't let it block Discord or success state
+    sendToGoogleSheet(name, email, phone, business).catch(() => {});
+    await sendToDiscord(name, email, phone, business);
     submitBtn.textContent = '✓ Request Sent — We will be in touch within 24 hours';
     submitBtn.style.background = '#22c55e';
     submitBtn.style.boxShadow = '0 0 30px rgba(34,197,94,0.3)';
