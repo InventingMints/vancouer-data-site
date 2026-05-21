@@ -41,10 +41,10 @@ const observer = new IntersectionObserver((entries) => {
 
 revealEls.forEach(el => observer.observe(el));
 
-// Discord webhook
+// ── Discord webhook ──────────────────────────────────────────────
 const DISCORD_WEBHOOK = 'https://discord.com/api/webhooks/1506152759567585370/aa9QBH4dur7y-Izkg4wBLMN42Oz28tKctvpddReeiFb-wHKE5OEHkUhCPuek1C6mS09h';
 
-async function sendToDiscord(name, email, business) {
+async function sendToDiscord(name, email, phone, business) {
   const now = new Date().toLocaleString('en-CA', { timeZone: 'America/Toronto', dateStyle: 'full', timeStyle: 'short' });
   const payload = {
     username: 'Datamint Labs · Lead Bot',
@@ -53,11 +53,12 @@ async function sendToDiscord(name, email, business) {
       title: '📬 New Review Request',
       color: 0xA252F3,
       fields: [
-        { name: '👤 Name',     value: name || '—',     inline: true  },
-        { name: '📧 Email',    value: email || '—',    inline: true  },
+        { name: '👤 Name',     value: name     || '—', inline: true  },
+        { name: '📧 Email',    value: email    || '—', inline: true  },
+        { name: '📞 Phone',    value: phone    || '—', inline: true  },
         { name: '🏢 Business', value: business || '—', inline: false },
         { name: '📍 Source',   value: 'datamintlabs.ca — Book a Review form', inline: false },
-        { name: '🕐 Time',     value: now, inline: false },
+        { name: '🕐 Time',     value: now,              inline: false },
       ],
       footer: { text: 'Datamint Labs' },
       thumbnail: { url: 'https://cdn-icons-png.flaticon.com/512/2920/2920244.png' },
@@ -70,24 +71,47 @@ async function sendToDiscord(name, email, business) {
   });
 }
 
-// Form submit
+// ── Google Sheets (via Apps Script web app) ──────────────────────
+// REPLACE the URL below with your deployed Apps Script web app URL
+const GOOGLE_SHEET_WEBHOOK = 'YOUR_APPS_SCRIPT_WEB_APP_URL';
+
+async function sendToGoogleSheet(name, email, phone, business) {
+  if (GOOGLE_SHEET_WEBHOOK === 'YOUR_APPS_SCRIPT_WEB_APP_URL') return; // not configured yet
+  const params = new URLSearchParams({ name, email, phone, business });
+  await fetch(`${GOOGLE_SHEET_WEBHOOK}?${params}`, { method: 'GET' });
+}
+
+// ── Form submit ──────────────────────────────────────────────────
 const form = document.querySelector('.cta-form');
 const submitBtn = form.querySelector('button');
+
 submitBtn.addEventListener('click', async (e) => {
   e.preventDefault();
   const inputs = form.querySelectorAll('input');
   const name     = inputs[0].value.trim();
   const email    = inputs[1].value.trim();
-  const business = inputs[2].value.trim();
+  const phone    = inputs[2].value.trim();
+  const business = inputs[3].value.trim();
 
-  if (!name) { inputs[0].focus(); inputs[0].style.borderColor = 'rgba(239,68,68,0.6)'; return; }
-  if (!email || !email.includes('@')) { inputs[1].focus(); inputs[1].style.borderColor = 'rgba(239,68,68,0.6)'; return; }
+  // Validation
+  if (!name) {
+    inputs[0].focus(); inputs[0].style.borderColor = 'rgba(239,68,68,0.6)'; return;
+  }
+  if (!email || !email.includes('@')) {
+    inputs[1].focus(); inputs[1].style.borderColor = 'rgba(239,68,68,0.6)'; return;
+  }
+  if (!phone) {
+    inputs[2].focus(); inputs[2].style.borderColor = 'rgba(239,68,68,0.6)'; return;
+  }
 
   submitBtn.textContent = 'Sending…';
   submitBtn.disabled = true;
 
   try {
-    await sendToDiscord(name, email, business);
+    await Promise.all([
+      sendToDiscord(name, email, phone, business),
+      sendToGoogleSheet(name, email, phone, business),
+    ]);
     submitBtn.textContent = '✓ Request Sent — We will be in touch within 24 hours';
     submitBtn.style.background = '#22c55e';
     submitBtn.style.boxShadow = '0 0 30px rgba(34,197,94,0.3)';
