@@ -73,7 +73,7 @@ async function sendToDiscord(name, email, phone, business) {
 
 // ── Google Sheets (via Apps Script web app) ──────────────────────
 // REPLACE the URL below with your deployed Apps Script web app URL
-const GOOGLE_SHEET_WEBHOOK = 'YOUR_APPS_SCRIPT_WEB_APP_URL';
+const GOOGLE_SHEET_WEBHOOK = 'https://script.google.com/macros/s/AKfycbxLhekjxGkWxjgfxdPz-uRvaTSJoJ47WGNoIg5QlzZlOhhNMkr0MYBfcEDcJKplSNU_TQ/exec';
 
 async function sendToGoogleSheet(name, email, phone, business) {
   if (GOOGLE_SHEET_WEBHOOK === 'YOUR_APPS_SCRIPT_WEB_APP_URL') return; // not configured yet
