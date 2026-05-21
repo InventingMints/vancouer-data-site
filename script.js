@@ -75,11 +75,13 @@ async function sendToDiscord(name, email, phone, business) {
 // REPLACE the URL below with your deployed Apps Script web app URL
 const GOOGLE_SHEET_WEBHOOK = 'https://script.google.com/macros/s/AKfycbxLhekjxGkWxjgfxdPz-uRvaTSJoJ47WGNoIg5QlzZlOhhNMkr0MYBfcEDcJKplSNU_TQ/exec';
 
-async function sendToGoogleSheet(name, email, phone, business) {
+function sendToGoogleSheet(name, email, phone, business) {
   const params = new URLSearchParams({ name, email, phone, business });
-  await fetch(`${GOOGLE_SHEET_WEBHOOK}?${params}`, {
-    method: 'GET',
-    mode: 'no-cors', // required for Google Apps Script from external domains
+  // Image beacon — bypasses CORS entirely, follows Google's redirects natively
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = img.onerror = () => resolve();
+    img.src = `${GOOGLE_SHEET_WEBHOOK}?${params}`;
   });
 }
 
