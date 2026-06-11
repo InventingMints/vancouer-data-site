@@ -15,14 +15,14 @@
       --purple-light: #A252F3;
       --purple-dark: #6D28D9;
       --emerald: #10B981;
-      --emerald-light: #34D399;
-      --bg: #0A0612;
-      --bg-2: #110A1E;
-      --surface: rgba(255,255,255,0.04);
-      --border: rgba(255,255,255,0.08);
-      --text: #F4F1FA;
-      --text-muted: rgba(244,241,250,0.6);
-      --text-dim: rgba(244,241,250,0.35);
+      --emerald-light: #059669; /* darkened for light-theme text contrast */
+      --bg: #F8F6F1;
+      --bg-2: #F2EFE8;
+      --surface: #FFFFFF;
+      --border: rgba(0,0,0,0.09);
+      --text: #1A1714;
+      --text-muted: #6B6560;
+      --text-dim: #9E9890;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -71,9 +71,9 @@
       pointer-events: none;
       transform: translate(-50%, -50%);
       transition: width 0.25s, height 0.25s, background 0.25s, opacity 0.25s;
-      mix-blend-mode: difference;
+      opacity: 0.85;
     }
-    .cursor.is-hover { width: 56px; height: 56px; background: #fff; }
+    .cursor.is-hover { width: 48px; height: 48px; background: rgba(139,63,217,0.25); }
     @media (hover: none), (max-width: 768px) { .cursor { display: none; } }
 
     /* ── Grain ── */
@@ -98,7 +98,7 @@
       transition: background 0.4s, backdrop-filter 0.4s, padding 0.4s;
     }
     .nav.scrolled {
-      background: rgba(10,6,18,0.7);
+      background: rgba(248,246,241,0.75);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       padding-top: 0.75rem; padding-bottom: 0.75rem;
@@ -142,7 +142,7 @@
     .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
     .mobile-menu {
       position: fixed; inset: 0; z-index: 101;
-      background: rgba(10,6,18,0.97);
+      background: rgba(248,246,241,0.97);
       backdrop-filter: blur(20px);
       display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
       opacity: 0; pointer-events: none; transition: opacity 0.35s;
@@ -234,7 +234,7 @@
     }
     .hstat .num {
       font-family: 'Syne', sans-serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800;
-      background: linear-gradient(135deg, #fff, var(--purple-light));
+      background: linear-gradient(135deg, var(--text), var(--purple));
       -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
     }
     .hstat .lbl { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-dim); margin-top: 0.25rem; }
@@ -390,7 +390,7 @@
     .result-card .sector { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--emerald-light); }
     .result-card .metric {
       font-family: 'Syne', sans-serif; font-size: 2.6rem; font-weight: 800; line-height: 1;
-      background: linear-gradient(135deg, #fff, var(--purple-light));
+      background: linear-gradient(135deg, var(--text), var(--purple));
       -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
     }
     .result-card .what { font-size: 0.88rem; color: var(--text-muted); font-weight: 300; line-height: 1.7; flex: 1; }
@@ -414,7 +414,7 @@
     /* ── CTA ── */
     .cta-section {
       background:
-        radial-gradient(ellipse 60% 80% at 50% 110%, rgba(139,63,217,0.35), transparent 70%),
+        radial-gradient(ellipse 60% 80% at 50% 110%, rgba(139,63,217,0.14), transparent 70%),
         var(--bg-2);
       border-top: 1px solid var(--border);
     }
@@ -427,7 +427,7 @@
     .cta-box > p { color: var(--text-muted); font-weight: 300; max-width: 540px; margin: 0 auto 3rem; }
     .cta-form { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; text-align: left; }
     .cta-form input {
-      background: rgba(255,255,255,0.05);
+      background: var(--surface);
       border: 1px solid var(--border); border-radius: 14px;
       padding: 1.05rem 1.3rem; color: var(--text);
       font-family: inherit; font-size: 0.9rem;
@@ -435,7 +435,7 @@
       width: 100%;
     }
     .cta-form input::placeholder { color: var(--text-dim); }
-    .cta-form input:focus { outline: none; border-color: var(--purple-light); background: rgba(255,255,255,0.08); }
+    .cta-form input:focus { outline: none; border-color: var(--purple-light); }
     .cta-form .full { grid-column: 1 / -1; }
     .cta-form button {
       grid-column: 1 / -1;
@@ -743,7 +743,7 @@
           <div class="tech-chip"><img src="https://cdn.simpleicons.org/googlebigquery/34D399" alt="BigQuery" /><span>BigQuery</span></div>
           <div class="tech-chip"><img src="https://cdn.simpleicons.org/databricks/A252F3" alt="Databricks" /><span>Databricks</span></div>
           <div class="tech-chip"><img src="https://cdn.simpleicons.org/apacheairflow/34D399" alt="Airflow" /><span>Airflow</span></div>
-          <div class="tech-chip"><img src="https://raw.githubusercontent.com/gilbarbara/logos/main/logos/openai.svg" alt="OpenAI" style="filter: invert(1);" /><span>OpenAI</span></div>
+          <div class="tech-chip"><img src="https://raw.githubusercontent.com/gilbarbara/logos/main/logos/openai.svg" alt="OpenAI" /><span>OpenAI</span></div>
           <div class="tech-chip"><img src="https://cdn.simpleicons.org/pandas/A252F3" alt="Pandas" /><span>Pandas</span></div>
           <div class="tech-chip"><img src="https://raw.githubusercontent.com/gilbarbara/logos/main/logos/tableau-icon.svg" alt="Tableau" /><span>Tableau</span></div>
           <div class="tech-chip"><img src="https://raw.githubusercontent.com/gilbarbara/logos/main/logos/microsoft-power-bi.svg" alt="Power BI" /><span>Power BI</span></div>
@@ -764,7 +764,7 @@
           <div class="tech-chip"><img src="https://cdn.simpleicons.org/googlebigquery/34D399" alt="BigQuery" /><span>BigQuery</span></div>
           <div class="tech-chip"><img src="https://cdn.simpleicons.org/databricks/A252F3" alt="Databricks" /><span>Databricks</span></div>
           <div class="tech-chip"><img src="https://cdn.simpleicons.org/apacheairflow/34D399" alt="Airflow" /><span>Airflow</span></div>
-          <div class="tech-chip"><img src="https://raw.githubusercontent.com/gilbarbara/logos/main/logos/openai.svg" alt="OpenAI" style="filter: invert(1);" /><span>OpenAI</span></div>
+          <div class="tech-chip"><img src="https://raw.githubusercontent.com/gilbarbara/logos/main/logos/openai.svg" alt="OpenAI" /><span>OpenAI</span></div>
           <div class="tech-chip"><img src="https://cdn.simpleicons.org/pandas/A252F3" alt="Pandas" /><span>Pandas</span></div>
           <div class="tech-chip"><img src="https://raw.githubusercontent.com/gilbarbara/logos/main/logos/tableau-icon.svg" alt="Tableau" /><span>Tableau</span></div>
           <div class="tech-chip"><img src="https://raw.githubusercontent.com/gilbarbara/logos/main/logos/microsoft-power-bi.svg" alt="Power BI" /><span>Power BI</span></div>
@@ -833,8 +833,8 @@
       const COUNT = isMobile ? 900 : 2200;
       const positions = new Float32Array(COUNT * 3);
       const colors = new Float32Array(COUNT * 3);
-      const purple = new THREE.Color('#A252F3');
-      const emerald = new THREE.Color('#10B981');
+      const purple = new THREE.Color('#7C3AED');
+      const emerald = new THREE.Color('#059669');
       for (let i = 0; i < COUNT; i++) {
         positions[i * 3]     = (Math.random() - 0.5) * 16;
         positions[i * 3 + 1] = (Math.random() - 0.5) * 10;
@@ -846,8 +846,8 @@
       geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
       geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
       const mat = new THREE.PointsMaterial({
-        size: 0.022, vertexColors: true, transparent: true, opacity: 0.85,
-        depthWrite: false, blending: THREE.AdditiveBlending,
+        size: 0.026, vertexColors: true, transparent: true, opacity: 0.55,
+        depthWrite: false, blending: THREE.NormalBlending,
       });
       const points = new THREE.Points(geo, mat);
       scene.add(points);
@@ -993,7 +993,7 @@
               { name: '📧 Email', value: email || '-', inline: true },
               { name: '📞 Phone', value: phone || '-', inline: true },
               { name: '🏢 Business', value: business || '-', inline: false },
-              { name: '📍 Source', value: 'datamintlabs.ca - Book a Review form (v2)', inline: false },
+              { name: '📍 Source', value: 'datamintlabs.ca - Book a Review form', inline: false },
               { name: '🕐 Time', value: now, inline: false },
             ],
             footer: { text: 'Datamint Labs' },
